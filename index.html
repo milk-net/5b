@@ -1,24 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<title>Ignore the black screen, game is loading</title>
-	<meta name="description" content="An HTML5 port of the puzzle platformer in the world of Battle for Dream Island."/>
-	<meta charset="utf-8"/>
-	<meta name="author" content="coppersalts">
-	<meta property="og:title" content="HTML5b">
-	<meta property="og:type" content="website">
-	<meta property="og:url" content="https://coppersalts.github.io/HTML5b/">
-	<meta property="og:image" content="https://coppersalts.github.io/HTML5b/visuals/bg/bg0002.png">
-	<meta property="og:description" content="An HTML5 port of Cary Huang's BFDIA 5b.">
-	<meta name="theme-color" content="#c92b20">
-	<meta name="twitter:card" content="summary_large_image">
-	<link rel="shortcut icon" type="image/x-icon" href="./visuals/blocks/b0001.svg" />
-	<link rel="stylesheet" href="style.css" type="text/css"/>
-	<script type="text/javascript" src="5b.js"></script>
+  <title>5B</title>
+  <style>
+    html, body {
+      margin: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+    }
+  </style>
 </head>
-<body style="overflow:hidden;">
-<div id="center">
-	<div id="hide-contenteditable"><canvas width="960" height="540" id="cnv" contenteditable="false"></canvas></div>
-</div>
+<body>
+  <canvas id="cnv"></canvas>
+
+  <script>
+    const canvas = document.getElementById('cnv');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      ctx.fillStyle = 'black';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+  </script>
 </body>
 </html>
